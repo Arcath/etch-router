@@ -1,5 +1,7 @@
 # Etch-Router
 
+[![Build Status](https://travis-ci.org/Arcath/etch-router.svg?branch=master)](https://travis-ci.org/Arcath/etch-router)
+
 A Router for Etch that provides methods to link and pass props to Etch components
 
 # Install
