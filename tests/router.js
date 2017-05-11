@@ -1,5 +1,5 @@
 const etch = require('etch')
-const {Router, Route, Link} = require('../index')
+const {Router, Route, Link, MissingRoute} = require('../index')
 
 class Layout{
   constructor(props, children){
@@ -190,5 +190,35 @@ describe('The Router', function(){
     done()
 
     //testComponent.refs.link.element.dispatchEvent(new MouseEvent('click'))
+  })
+
+  it('should use a 404 route if provided', function(){
+    class Missing{
+      constructor(props, children){
+        this.props = props
+
+        etch.initialize(this)
+      }
+
+      update(props, children){
+        return etch.update(this)
+      }
+
+      render(){
+        return etch.dom(Layout, {}, 'Missing')
+      }
+    }
+
+    var router = new Router(
+      {currentPath: '/missing'},
+      new Route(
+        {path: '/', component: Layout, name: 'Index'},
+        new Route({path: '/', component: Home, name: 'Home'}),
+        new Route({path: '/about', component: About, name: 'About'})
+      ),
+      new MissingRoute({component: Missing})
+    )
+
+    expect(router.element.outerHTML).to.equal('<div class="layout">Missing</div>')
   })
 })
