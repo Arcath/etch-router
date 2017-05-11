@@ -34,3 +34,17 @@ var router = new Router(
   )
 )
 ```
+
+Append your router to the document like normal:
+
+```javascript
+document.body.appendChild(router.element)
+```
+
+You will now have the `Home` component as a child of the `Layout` component. To navigate to other pages update the `router` props to a new `currentPath` e.g.
+
+```javascript
+router.update({currentPath: '/about'})
+```
+
+Etch will handle the DOM update and you will now have `About` as a child of `Layout`
