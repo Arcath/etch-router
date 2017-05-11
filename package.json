@@ -1,0 +1,29 @@
+{
+  "name": "etch-router",
+  "version": "0.0.0",
+  "description": "Routing for Etch",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron-mocha --renderer --recursive tests",
+    "test-interactive": "electron-mocha --renderer --recursive --interactive tests"
+  },
+  "keywords": [
+    "etch router electron atom"
+  ],
+  "author": "Adam Laycock",
+  "license": "MIT",
+  "peerDependencies": {
+    "etch": ">= 0.12.2 < 1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "electron": "^1.6.7",
+    "electron-mocha": "^3.4.0",
+    "mocha": "^3.3.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "path-to-regexp": "^1.7.0",
+    "sodb": "^1.2.0"
+  }
+}
