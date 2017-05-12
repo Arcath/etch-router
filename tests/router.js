@@ -283,5 +283,76 @@ describe('The Router', function(){
         done()
       })
     })
+
+    it('should support the propsForComponent hook', function(done){
+      var passed = false
+
+      var router = new Router(
+        {
+          currentPath: '/',
+          propsForComponent: function(component, newPath, newProps){
+            passed = (newPath == '/about')
+
+            return newProps
+          }
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
+
+    it('should support the afterDOMUpdate hook', function(done){
+      var passed = false
+
+      var router = new Router(
+        {
+          currentPath: '/',
+          afterDOMUpdate: function(){
+            passed = true
+          }
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
+
+    it('should support the afterChangePath hook', function(done){
+      var passed = false
+
+      var router = new Router(
+        {
+          currentPath: '/',
+          afterChangePath: function(newPath){
+            passed = (newPath == '/about')
+          }
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
   })
 })
