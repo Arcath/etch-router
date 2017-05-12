@@ -50,3 +50,7 @@ router.update({currentPath: '/about'})
 ```
 
 Etch will handle the DOM update and you will now have `About` as a child of `Layout`
+
+# Docs
+
+The etch-router docs are built from `docs/` and is a functional etch-router application.

@@ -133,6 +133,21 @@ describe('The Router', function(){
     expect(router.element.outerHTML).to.equal('<div class="layout"><div class="about">About</div></div>')
   })
 
+  it('should support infinate depth', function(){
+    var router = new Router(
+      {currentPath: '/about'},
+      new Route(
+        {path: '/', component: Layout, name: 'Index'},
+        new Route(
+          {path: '/', component: Layout, name: 'Home'},
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+    )
+
+    expect(router.element.outerHTML).to.equal('<div class="layout"><div class="layout"><div class="about">About</div></div></div>')
+  })
+
   it('should change component', function(done){
     var router = new Router(
       {currentPath: '/about'},
