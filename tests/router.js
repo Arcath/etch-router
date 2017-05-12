@@ -236,4 +236,52 @@ describe('The Router', function(){
 
     expect(router.element.outerHTML).to.equal('<div class="layout">Missing</div>')
   })
+
+  describe('Hooks', function(){
+    it('should support the beforeChangePath hook', function(done){
+      var passed = false
+
+      var router = new Router(
+        {
+          currentPath: '/',
+          beforeChangePath: function(oldPath, newPath){
+            passed = (oldPath == '/' && newPath == '/about')
+          }
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
+
+    it('should support the beforeDOMUpdate hook', function(done){
+      var passed = false
+
+      var router = new Router(
+        {
+          currentPath: '/',
+          beforeDOMUpdate: function(newPath){
+            passed = (newPath == '/about')
+          }
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
+  })
 })
