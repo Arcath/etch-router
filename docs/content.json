@@ -1,0 +1,9 @@
+---
+---
+{
+  "pages": {
+    {% for page in site.pages %}
+        "{{page.url}}": {{ page | jsonify }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+}

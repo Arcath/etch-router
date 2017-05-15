@@ -1,0 +1,5 @@
+url: 'http://arcath.github.io/etch-router'
+exclude:
+  - 'js/'
+  - 'less/'
+  - 'node_modules/'
