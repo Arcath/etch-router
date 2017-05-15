@@ -355,4 +355,33 @@ describe('The Router', function(){
       })
     })
   })
+
+  describe('Browser Mode', function(){
+    it('should support browser mode', function(done){
+      var router = new Router(
+        {
+          currentPath: '/about',
+          browser: true
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: About, name: 'About'})
+        )
+      )
+
+      expect(router.element.outerHTML).to.equal('<div class="layout"><div class="about">About</div></div>')
+
+      router.update({currentPath: '/'}).then(function(){
+        expect(router.currentRoute.props.path).to.equal('/')
+        expect(router.element.outerHTML).to.equal('<div class="layout"><div class="home">Home</div></div>')
+
+        history.back()
+        setTimeout(function(){
+          expect(router.element.outerHTML).to.equal('<div class="layout"><div class="about">About</div></div>')
+          done()
+        }, 300)
+      })
+    })
+  })
 })
