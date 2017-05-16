@@ -1,4 +1,5 @@
 const etch = require('etch')
+const {Link} = require('etch-router')
 
 class Layout{
   constructor(props, children){
@@ -23,7 +24,10 @@ class Layout{
         etch.dom.div(
           {className: 'container'},
           etch.dom.i({className: 'fa fa-code-fork'}),
-          etch.dom.h1({}, 'Etch Router'),
+          etch.dom.h1(
+            {},
+            etch.dom(Link, {to: '/', router: this.props.router}, 'Etch Router')
+          ),
           etch.dom.a(
             {href: 'https://github.com/Arcath/etch-router'},
             etch.dom.i({className: 'fa fa-github'})

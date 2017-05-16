@@ -5,6 +5,8 @@ permalink: '/'
 ---
 Etch-Router is a routing system for [Etch](https://github.com/atom/etch).
 
+[Releases](/releases)
+
 ### Get It
 
 Install `etch-router` and `etch` from npm:

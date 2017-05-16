@@ -13,6 +13,8 @@ const Components = require('./components/components')
 const Hooks = require('./components/hooks')
 const Layout = require('./components/layout')
 const Missing = require('./components/missing')
+const Release = require('./components/release')
+const Releases = require('./components/releases')
 const Static = require('./components/static')
 
 var bindLinksToRouter = function(){
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function(){
         NProgress.start()
       },
       afterChangePath: function(newPath){
-        if(document.title != window.pages[newPath].title){
+        if(window.pages[newPath] && document.title != window.pages[newPath].title){
           document.title = window.pages[newPath].title
         }
         NProgress.done()
@@ -80,6 +82,10 @@ document.addEventListener('DOMContentLoaded', function(){
         new Route({path: '/after-change-path', component: Static, name: 'afterChangePath'}),
         new Route({path: '/after-dom-update', component: Static, name: 'afterDOMUpdate'}),
         new Route({path: '/props-for-component', component: Static, name: 'propsForComponent'})
+      ),
+      new Route(
+        {path: '/releases', component: Releases, name: 'Releases'},
+        new Route({path: '/:id', component: Release, name: 'Release'})
       )
     ),
     new MissingRoute({component: Missing})
