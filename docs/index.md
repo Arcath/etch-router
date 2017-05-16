@@ -3,8 +3,6 @@ layout: 'default'
 title: 'Etch Router'
 permalink: '/'
 ---
-## Home
-
 Etch-Router is a routing system for [Etch](https://github.com/atom/etch).
 
 ### Get It
@@ -31,6 +29,12 @@ var router = new Router(
 
 document.body.appendChild(router.element)
 ```
+
+# Examples
+
+ - [This site](https://github.com/Arcath/etch-router/tree/master/docs)
+
+# Read More
 
 ## Components
 

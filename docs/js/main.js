@@ -42,15 +42,20 @@ document.addEventListener('DOMContentLoaded', function(){
       beforeChangePath: function(){
         NProgress.start()
       },
-      afterChangePath: function(){
+      afterChangePath: function(newPath){
+        if(document.title != window.pages[newPath].title){
+          document.title = window.pages[newPath].title
+        }
         NProgress.done()
       },
       propsForComponent: function(component, newPath, newProps){
         if(component.name === Static.name){
           if(document.getElementById('content').dataset.path == newPath){
             newProps.content = document.getElementById('content').innerHTML
+            newProps.title = document.getElementById('title').innerHTML
           }else{
             newProps.content = window.pages[newPath].content
+            newProps.title = window.pages[newPath].title
           }
         }
 

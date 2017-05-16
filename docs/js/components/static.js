@@ -19,7 +19,11 @@ class Static{
   }
 
   render(){
-    return etch.dom.div({className: 'static', ref: 'content', innerHTML: this.markdown.makeHtml(this.props.content)})
+    return etch.dom.div(
+      {className: 'static', ref: 'content'},
+      etch.dom.h1({}, this.props.title),
+      etch.dom.div({innerHTML: this.markdown.makeHtml(this.props.content)})
+    )
   }
 }
 
