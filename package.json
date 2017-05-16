@@ -25,6 +25,7 @@
     "electron": "^1.6.7",
     "electron-mocha": "^3.4.0",
     "eslint": "^3.19.0",
+    "etch-stateless": "^1.0.0",
     "mocha": "^3.4.1"
   },
   "dependencies": {
