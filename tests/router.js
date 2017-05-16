@@ -262,6 +262,17 @@ describe('The Router', function(){
     expect(router.element.outerHTML).to.equal('<p>foo</p>')
   })
 
+  it('should provide the isActive function', function(){
+    var router = new Router(
+      {currentPath: '/foo'},
+      new Route({path: '/bar', component: TestableComponent}),
+      new Route({path: '/foo', component: TestableComponent})
+    )
+
+    expect(router.isActive('/foo')).to.equal(true)
+    expect(router.isActive('/bar')).to.equal(false)
+  })
+
   describe('Hooks', function(){
     it('should support the beforeChangePath hook', function(done){
       var passed = false
