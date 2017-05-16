@@ -54,3 +54,7 @@ Etch will handle the DOM update and you will now have `About` as a child of `Lay
 # Docs
 
 The etch-router docs are built from `docs/` and is a functional etch-router application.
+
+Inside the `docs/` folder run `npm install` to install all the dependencies.
+
+Any edits to the Javascript also needs to include the compiled webpack bundle.

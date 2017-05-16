@@ -237,6 +237,31 @@ describe('The Router', function(){
     expect(router.element.outerHTML).to.equal('<div class="layout">Missing</div>')
   })
 
+  it('should pass params to a route', function(){
+    class Test{
+      constructor(props, children){
+        this.props = props
+
+        etch.initialize(this)
+      }
+
+      update(props, children){
+        return etch.update(this)
+      }
+
+      render(){
+        return etch.dom.p({}, this.props.params.slug)
+      }
+    }
+
+    var router = new Router(
+      {currentPath: '/posts/foo'},
+      new Route({path: '/posts/:slug', component: Test})
+    )
+
+    expect(router.element.outerHTML).to.equal('<p>foo</p>')
+  })
+
   describe('Hooks', function(){
     it('should support the beforeChangePath hook', function(done){
       var passed = false
