@@ -382,7 +382,53 @@ describe('The Router', function(){
       })
     })
 
-    it('should support the afterChangePath hook', function(done){
+    it('should allow propsForComponent to be defined on the component', function(done){
+      var passed = false
+
+      class Test{
+        constructor(props, children){
+          this.props = props
+          this.children = children
+
+          etch.initialize(this)
+        }
+
+        update(props, children){
+          this.props = props
+          this.children = children
+
+          return etch.update(this)
+        }
+
+        render(){
+          return etch.dom.div({className: 'about'}, 'foo')
+        }
+
+        static propsForComponent(newPath, newProps){
+          passed = true
+
+          return newProps
+        }
+      }
+
+      var router = new Router(
+        {
+          currentPath: '/'
+        },
+        new Route(
+          {path: '/', component: Layout, name: 'Index'},
+          new Route({path: '/', component: Home, name: 'Home'}),
+          new Route({path: '/about', component: Test, name: 'About'})
+        )
+      )
+
+      router.update({currentPath: '/about'}).then(function(){
+        expect(passed).to.equal(true)
+        done()
+      })
+    })
+
+    it('should support the afterChangePath hook', function(){
       var passed = false
 
       var router = new Router(
