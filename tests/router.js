@@ -1,4 +1,5 @@
 const etch = require('etch')
+const EtchRouterError = require('../lib/classes/error')
 const {Router, Route, Link, MissingRoute} = require('../index')
 
 class Layout{
@@ -61,7 +62,7 @@ describe('The Router', function(){
   it('should throw an error if it has no children', function(){
     expect(function(){
       var router = new Router()
-    }).to.throw(/Router requires routes/)
+    }).to.throw(EtchRouterError, /Router requires routes/)
   })
 
   it('should only take routes as children', function(){
@@ -71,7 +72,7 @@ describe('The Router', function(){
         etch.dom.div({}, 'No supposed to be here'),
         etch.dom.div({}, 'Or here')
       )
-    }).to.throw(/div is not a valid child of Router/)
+    }).to.throw(EtchRouterError, /div is not a valid child of Router/)
   })
 
   it('should accept a route', function(){
@@ -416,7 +417,7 @@ describe('The Router', function(){
         setTimeout(function(){
           expect(router.element.outerHTML).to.equal('<div class="layout"><div class="about">About</div></div>')
           done()
-        }, 300)
+        }, 50)
       })
     })
   })
