@@ -1,6 +1,7 @@
 require('typeface-raleway')
 require('typeface-lato')
 require('../node_modules/font-awesome/css/font-awesome.min.css')
+require('../node_modules/highlight.js/styles/railscasts.css')
 require('../node_modules/nprogress/nprogress.css')
 require('../less/style.less')
 

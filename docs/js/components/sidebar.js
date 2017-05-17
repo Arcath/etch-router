@@ -19,9 +19,11 @@ class Sidebar{
   render(){
     return etch.dom.div(
       {className: 'sidebar'},
+      etch.dom.h4({}, 'Etch Router'),
       etch.dom.ul(
         {},
-        etch.dom.li({}, etch.dom(Link, {to: '/', router: this.props.router}, 'Home'))
+        etch.dom.li({}, etch.dom(Link, {to: '/', router: this.props.router}, 'Home')),
+        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases'))
       ),
       etch.dom.h4({}, 'Components'),
       etch.dom.ul(
