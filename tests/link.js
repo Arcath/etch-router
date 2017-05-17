@@ -10,4 +10,13 @@ describe('Link', function(){
 
     expect(router.refTree.link.isActive()).to.equal(false)
   })
+
+  it('should support active class name', function(){
+    var router = new Router(
+      {currentPath: '/'},
+      new Route({path: '/', component: TestableComponent})
+    )
+
+    expect(router.refTree.link.element.className).to.equal(' active')
+  })
 })

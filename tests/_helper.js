@@ -24,7 +24,7 @@ global.TestableComponent = class{
       {className: 'test'},
       etch.dom.p(
         {},
-        etch.dom(Link, {to: '/', router: this.props.router, ref: 'link'}, 'link')
+        etch.dom(Link, {to: '/', router: this.props.router, ref: 'link', activeClassName: 'active'}, 'link')
       ),
       ...this.children
     )
