@@ -10836,6 +10836,8 @@ module.exports = new Set([
 const etch = __webpack_require__(0)
 const {Link} = __webpack_require__(1)
 
+const Sidebar = __webpack_require__(8)
+
 class Layout{
   constructor(props, children){
     this.props = props
@@ -10875,6 +10877,7 @@ class Layout{
       ),
       etch.dom.div(
         {className: 'container'},
+        etch.dom(Sidebar, {router: this.props.router}),
         etch.dom.div({className: 'content'}, ...this.children)
       ),
       etch.dom.div({className: 'footer'})
@@ -10914,7 +10917,14 @@ class Sidebar{
       etch.dom.ul(
         {},
         etch.dom.li({}, etch.dom(Link, {to: '/', router: this.props.router}, 'Home')),
-        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases'))
+        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases')),
+        etch.dom.li({}, etch.dom(Link, {to: '/examples', router: this.props.router}, 'Examples'))
+      ),
+      etch.dom.h4({}, 'Guides'),
+      etch.dom.ul(
+        {},
+        etch.dom.li({}, etch.dom(Link, {to: '/guides/quick-start', router: this.props.router}, 'Quick Start')),
+        etch.dom.li({}, etch.dom(Link, {to: '/guides/navigating', router: this.props.router}, 'Navigating'))
       ),
       etch.dom.h4({}, 'Components'),
       etch.dom.ul(
@@ -31758,8 +31768,6 @@ if (typeof module !== 'undefined' && module.exports) {
 
 const etch = __webpack_require__(0)
 
-const Sidebar = __webpack_require__(8)
-
 class Components{
   constructor(props, children){
     this.props = props
@@ -31778,8 +31786,7 @@ class Components{
   render(){
     return etch.dom.div(
       {className: 'components'},
-      etch.dom(Sidebar, {router: this.props.router}),
-      etch.dom.div({className: 'content'}, ...this.children)
+      ...this.children
     )
   }
 }
@@ -31793,8 +31800,6 @@ module.exports = Components
 
 const etch = __webpack_require__(0)
 const {Link} = __webpack_require__(1)
-
-const Sidebar = __webpack_require__(8)
 
 class Hooks{
   constructor(props, children){
@@ -31814,9 +31819,6 @@ class Hooks{
   render(){
     return etch.dom.div(
       {className: 'hooks'},
-      etch.dom(Sidebar, {router: this.props.router}),
-      etch.dom.div(
-        {className: 'content'},
         etch.dom.p(
           {className: 'notice'},
           'Hooks are passed to ',
@@ -31824,7 +31826,6 @@ class Hooks{
           ' as props.'
         ),
         ...this.children
-      )
     )
   }
 }
@@ -32065,7 +32066,7 @@ class Static{
     this.props = props
     this.children = children
 
-    this.markdown = new showdown.Converter({extensions: ['codehighlight']})
+    this.markdown = new showdown.Converter({extensions: ['codehighlight'], tables: true})
 
     etch.initialize(this)
   }
@@ -32778,6 +32779,7 @@ const jQuery = __webpack_require__(4)
 const NProgress = __webpack_require__(57)
 
 const Components = __webpack_require__(51)
+const Guides = __webpack_require__(383)
 const Hooks = __webpack_require__(52)
 const Layout = __webpack_require__(7)
 const Missing = __webpack_require__(53)
@@ -32810,6 +32812,7 @@ document.addEventListener('DOMContentLoaded', function(){
       browser: true,
       currentPath: window.location.pathname,
       beforeChangePath: function(){
+        window.scrollTo(0, 0)
         NProgress.start()
       },
       afterChangePath: function(newPath){
@@ -32841,6 +32844,12 @@ document.addEventListener('DOMContentLoaded', function(){
       new Route(
         {path: '/releases', component: Releases, name: 'Releases'},
         new Route({path: '/:id', component: Release, name: 'Release'})
+      ),
+      new Route({path: '/examples', component: Static, name: 'Examples'}),
+      new Route(
+        {path: '/guides', component: Guides, name: 'Guides'},
+        new Route({path: '/quick-start', component: Static, name: 'Quick Start'}),
+        new Route({path: '/navigating', component: Static, name: 'Navigating'})
       )
     ),
     new MissingRoute({component: Missing})
@@ -33808,7 +33817,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  padding: 0px;\n  margin: 0px;\n  font-family: 'Lato', sans-serif;\n  color: #2c3e50;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: 'Raleway', sans-serif;\n}\na {\n  color: #3498db;\n  text-decoration: none;\n}\na:hover {\n  color: #16a085;\n}\n#content,\n#title {\n  display: none;\n}\n.container {\n  width: 900px;\n  margin: auto;\n}\n.header {\n  background-color: #9b59b6;\n  color: #ecf0f1;\n  overflow: auto;\n}\n.header i {\n  float: left;\n  font-size: 50px;\n  padding-top: 5px;\n}\n.header h1 {\n  float: left;\n  font-size: 25px;\n  margin: 0px;\n  padding-top: 15px;\n  margin-left: 10px;\n}\n.header a {\n  float: right;\n  color: #ecf0f1;\n  margin: 5px;\n}\n.header a:hover {\n  color: #2c3e50;\n}\n.components .sidebar,\n.hooks .sidebar {\n  float: left;\n  width: 200px;\n}\n.components .content,\n.hooks .content {\n  float: left;\n  width: calc(100% - 250px);\n}\n.components .content .notice,\n.hooks .content .notice {\n  background-color: #16a085;\n  color: #ecf0f1;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.components .content .notice a,\n.hooks .content .notice a {\n  color: #e67e22;\n}\npre {\n  background-color: #232323;\n  color: #e6e1dc;\n}\n", ""]);
+exports.push([module.i, "body {\n  padding: 0px;\n  margin: 0px;\n  font-family: 'Lato', sans-serif;\n  color: #2c3e50;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: 'Raleway', sans-serif;\n}\na {\n  color: #3498db;\n  text-decoration: none;\n}\na:hover {\n  color: #16a085;\n}\n#content,\n#title {\n  display: none;\n}\n.container {\n  width: 900px;\n  margin: auto;\n}\n.header {\n  background-color: #9b59b6;\n  color: #ecf0f1;\n  overflow: auto;\n}\n.header i {\n  float: left;\n  font-size: 50px;\n  padding-top: 5px;\n}\n.header h1 {\n  float: left;\n  font-size: 25px;\n  margin: 0px;\n  padding-top: 15px;\n  margin-left: 10px;\n}\n.header a {\n  float: right;\n  color: #ecf0f1;\n  margin: 5px;\n}\n.header a:hover {\n  color: #2c3e50;\n}\n.layout .sidebar {\n  float: left;\n  width: 200px;\n}\n.layout .sidebar ul {\n  list-style: none;\n  padding: 0px;\n}\n.layout .content {\n  float: left;\n  width: calc(100% - 250px);\n}\n.layout .content .notice {\n  background-color: #16a085;\n  color: #ecf0f1;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.layout .content .notice a {\n  color: #e67e22;\n}\npre {\n  background-color: #232323;\n  color: #e6e1dc;\n}\n", ""]);
 
 // exports
 
@@ -53022,6 +53031,38 @@ module.exports = function(module) {
 	}
 	return module;
 };
+
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const etch = __webpack_require__(0)
+
+class Guides{
+  constructor(props, children){
+    this.props = props
+    this.children = children
+
+    etch.initialize(this)
+  }
+
+  update(props, children){
+    this.props = props
+    this.children = children
+
+    return etch.update(this)
+  }
+
+  render(){
+    return etch.dom.div(
+      {className: 'guides'},
+      ...this.children
+    )
+  }
+}
+
+module.exports = Guides
 
 
 /***/ })

@@ -1,6 +1,8 @@
 const etch = require('etch')
 const {Link} = require('etch-router')
 
+const Sidebar = require('./sidebar')
+
 class Layout{
   constructor(props, children){
     this.props = props
@@ -40,6 +42,7 @@ class Layout{
       ),
       etch.dom.div(
         {className: 'container'},
+        etch.dom(Sidebar, {router: this.props.router}),
         etch.dom.div({className: 'content'}, ...this.children)
       ),
       etch.dom.div({className: 'footer'})

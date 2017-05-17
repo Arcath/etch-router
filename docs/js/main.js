@@ -11,6 +11,7 @@ const jQuery = require('jquery')
 const NProgress = require('nprogress')
 
 const Components = require('./components/components')
+const Guides = require('./components/guides')
 const Hooks = require('./components/hooks')
 const Layout = require('./components/layout')
 const Missing = require('./components/missing')
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
       browser: true,
       currentPath: window.location.pathname,
       beforeChangePath: function(){
+        window.scrollTo(0, 0)
         NProgress.start()
       },
       afterChangePath: function(newPath){
@@ -74,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function(){
       new Route(
         {path: '/releases', component: Releases, name: 'Releases'},
         new Route({path: '/:id', component: Release, name: 'Release'})
+      ),
+      new Route({path: '/examples', component: Static, name: 'Examples'}),
+      new Route(
+        {path: '/guides', component: Guides, name: 'Guides'},
+        new Route({path: '/quick-start', component: Static, name: 'Quick Start'}),
+        new Route({path: '/navigating', component: Static, name: 'Navigating'})
       )
     ),
     new MissingRoute({component: Missing})

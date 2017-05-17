@@ -23,7 +23,14 @@ class Sidebar{
       etch.dom.ul(
         {},
         etch.dom.li({}, etch.dom(Link, {to: '/', router: this.props.router}, 'Home')),
-        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases'))
+        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases')),
+        etch.dom.li({}, etch.dom(Link, {to: '/examples', router: this.props.router}, 'Examples'))
+      ),
+      etch.dom.h4({}, 'Guides'),
+      etch.dom.ul(
+        {},
+        etch.dom.li({}, etch.dom(Link, {to: '/guides/quick-start', router: this.props.router}, 'Quick Start')),
+        etch.dom.li({}, etch.dom(Link, {to: '/guides/navigating', router: this.props.router}, 'Navigating'))
       ),
       etch.dom.h4({}, 'Components'),
       etch.dom.ul(

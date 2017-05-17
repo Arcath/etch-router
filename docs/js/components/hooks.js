@@ -1,8 +1,6 @@
 const etch = require('etch')
 const {Link} = require('etch-router')
 
-const Sidebar = require('./sidebar')
-
 class Hooks{
   constructor(props, children){
     this.props = props
@@ -21,9 +19,6 @@ class Hooks{
   render(){
     return etch.dom.div(
       {className: 'hooks'},
-      etch.dom(Sidebar, {router: this.props.router}),
-      etch.dom.div(
-        {className: 'content'},
         etch.dom.p(
           {className: 'notice'},
           'Hooks are passed to ',
@@ -31,7 +26,6 @@ class Hooks{
           ' as props.'
         ),
         ...this.children
-      )
     )
   }
 }

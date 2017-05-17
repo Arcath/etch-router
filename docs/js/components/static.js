@@ -48,7 +48,7 @@ class Static{
     this.props = props
     this.children = children
 
-    this.markdown = new showdown.Converter({extensions: ['codehighlight']})
+    this.markdown = new showdown.Converter({extensions: ['codehighlight'], tables: true})
 
     etch.initialize(this)
   }

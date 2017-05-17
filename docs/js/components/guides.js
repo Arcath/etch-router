@@ -1,6 +1,6 @@
 const etch = require('etch')
 
-class Components{
+class Guides{
   constructor(props, children){
     this.props = props
     this.children = children
@@ -17,10 +17,10 @@ class Components{
 
   render(){
     return etch.dom.div(
-      {className: 'components'},
+      {className: 'guides'},
       ...this.children
     )
   }
 }
 
-module.exports = Components
+module.exports = Guides

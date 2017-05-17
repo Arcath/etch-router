@@ -5,8 +5,6 @@ permalink: '/'
 ---
 Etch-Router is a routing system for [Etch](https://github.com/atom/etch).
 
-[Releases](/releases)
-
 ### Get It
 
 Install `etch-router` and `etch` from npm:
@@ -31,24 +29,3 @@ var router = new Router(
 
 document.body.appendChild(router.element)
 ```
-
-# Examples
-
- - [This site](https://github.com/Arcath/etch-router/tree/master/docs)
-
-# Read More
-
-## Components
-
- - [Router](/components/router)
- - [Route](/components/route)
- - [Link](/components/link)
- - [MissingRoute](/components/missing-route)
-
-## Hooks
-
-- [beforeChangePath](/hooks/before-change-path)
-- [beforeDOMUpdate](/hooks/before-dom-update)
-- [afterDOMUpdate](/hooks/after-dom-update)
-- [afterChangePath](/hooks/after-change-path)
-- [propsForComponent](/hooks/props-for-component)
