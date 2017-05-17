@@ -1,4 +1,6 @@
 const etch = require('etch')
+const stateless = require('etch-stateless')
+
 const EtchRouterError = require('../lib/classes/error')
 const {Router, Route, Link, MissingRoute} = require('../index')
 
@@ -272,6 +274,17 @@ describe('The Router', function(){
 
     expect(router.isActive('/foo')).to.equal(true)
     expect(router.isActive('/bar')).to.equal(false)
+  })
+
+  it('should throw render errors', function(){
+    expect(function(){
+      var router = new Router(
+        {currentPath: '/foo'},
+        new Route({path: '/foo', component: stateless(etch, function(){
+          return etch.dom.foo({}, 'bar')
+        })})
+      )
+    }).to.throw(EtchRouterError, /Rendering Error/)
   })
 
   describe('Hooks', function(){
