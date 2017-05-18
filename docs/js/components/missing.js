@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 
@@ -24,26 +25,13 @@ class Missing{
       path = this.props.router.currentPath
     }
 
-    return etch.dom(
-      Layout,
-      {},
-      etch.dom.div(
-        {className: 'missing'},
-        etch.dom.h2({}, 'Error 404'),
-        etch.dom.p(
-          {},
-          'Could not find the page ',
-          etch.dom.i({}, path),
-          '.'
-        ),
-        etch.dom.p(
-          {},
-          'Head back to the ',
-          etch.dom(Link, {to: '/', router: this.props.router}, 'home page'),
-          '.'
-        )
-      )
-    )
+    return <Layout router={this.props.router}>
+      <div className='missing'>
+        <h2>Error 404</h2>
+        <p>Coud not find the page <i>{path}</i>.</p>
+        <p>Head back to the <Link to='/' router={this.props.router}>home page</Link>.</p>
+      </div>
+    </Layout>
   }
 }
 

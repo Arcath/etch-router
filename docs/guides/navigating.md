@@ -20,6 +20,7 @@ To make navigating easier Etch Router provides as `Link` component that triggers
 Lets update the home component to link to the about component
 
 ```javascript
+/** @jsx etch.dom */
 const {Link} = require('etch-router')
 
 class Home{
@@ -34,11 +35,10 @@ class Home{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'home', ref: 'homePage'},
-      etch.dom.h1({}, 'Home'),
-      etch.dom(Link, {to: '/about', router: this.props.router}, 'About Us')
-    )
+    return <div className='home' ref='homePage'>
+      <h1>Home</h1>
+      <Link to='/about' router={this.props.router}>About Us</Link>
+    </div>
   }
 
   destroy(){

@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const stateless = require('etch-stateless')
 
@@ -10,7 +11,7 @@ describe('Ref Tree', function(){
       new Route({
         path: '/',
         component: stateless(etch, function(props, children){
-          return etch.dom.div({className: 'layout', ref: 'layoutDiv'}, ...children)
+          return <div className='layout' ref='layoutDiv'>{children}</div>
         })
       })
     )
@@ -25,13 +26,13 @@ describe('Ref Tree', function(){
         {
           path: '/',
           component: stateless(etch, function(props, children){
-            return etch.dom.div({className: 'layout', ref: 'layoutDiv'}, ...children)
+            return <div className='layout' ref='layoutDiv'>{children}</div>
           })
         },
         new Route({
           path: '/',
           component: stateless(etch, function(props, children){
-            return etch.dom.div({className: 'home', ref: 'home'})
+            return <div className='home' ref='home' />
           })
         })
       )
@@ -47,13 +48,13 @@ describe('Ref Tree', function(){
         {
           path: '/',
           component: stateless(etch, function(props, children){
-            return etch.dom.div({className: 'layout', ref: 'home'}, ...children)
+            return <div className='layout' ref='home'>{children}</div>
           })
         },
         new Route({
           path: '/',
           component: stateless(etch, function(props, children){
-            return etch.dom.p({className: 'home', ref: 'home'})
+            return <p className='home' ref='home' />
           })
         })
       )

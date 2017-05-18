@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 
@@ -17,39 +18,34 @@ class Sidebar{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'sidebar'},
-      etch.dom.h4({}, 'Etch Router'),
-      etch.dom.ul(
-        {},
-        etch.dom.li({}, etch.dom(Link, {to: '/', router: this.props.router}, 'Home')),
-        etch.dom.li({}, etch.dom(Link, {to: '/releases', router: this.props.router}, 'Releases')),
-        etch.dom.li({}, etch.dom(Link, {to: '/examples', router: this.props.router}, 'Examples'))
-      ),
-      etch.dom.h4({}, 'Guides'),
-      etch.dom.ul(
-        {},
-        etch.dom.li({}, etch.dom(Link, {to: '/guides/quick-start', router: this.props.router}, 'Quick Start')),
-        etch.dom.li({}, etch.dom(Link, {to: '/guides/navigating', router: this.props.router}, 'Navigating'))
-      ),
-      etch.dom.h4({}, 'Components'),
-      etch.dom.ul(
-        {},
-        etch.dom.li({}, etch.dom(Link, {to: '/components/router', router: this.props.router}, 'Router')),
-        etch.dom.li({}, etch.dom(Link, {to: '/components/route', router: this.props.router}, 'Route')),
-        etch.dom.li({}, etch.dom(Link, {to: '/components/link', router: this.props.router}, 'Link')),
-        etch.dom.li({}, etch.dom(Link, {to: '/components/missing-route', router: this.props.router}, 'MissingRoute'))
-      ),
-      etch.dom.h4({}, 'Hooks'),
-      etch.dom.ul(
-        {},
-        etch.dom.li({}, etch.dom(Link, {to: '/hooks/before-change-path', router: this.props.router}, 'beforeChangePath')),
-        etch.dom.li({}, etch.dom(Link, {to: '/hooks/before-dom-update', router: this.props.router}, 'beforeDOMUpdate')),
-        etch.dom.li({}, etch.dom(Link, {to: '/hooks/after-dom-update', router: this.props.router}, 'afterDOMUpdate')),
-        etch.dom.li({}, etch.dom(Link, {to: '/hooks/after-change-path', router: this.props.router}, 'afterChangePath')),
-        etch.dom.li({}, etch.dom(Link, {to: '/hooks/props-for-component', router: this.props.router}, 'propsForComponent'))
-      )
-    )
+    return <div className='sidebar'>
+      <h4>Etch Router</h4>
+      <ul>
+        <li><Link to='/' router={this.props.router}>Home</Link></li>
+        <li><Link to='/releases' router={this.props.router}>Releases</Link></li>
+        <li><Link to='/examples' router={this.props.router}>Examples</Link></li>
+      </ul>
+      <h4>Guides</h4>
+      <ul>
+        <li><Link to='/guides/quick-start' router={this.props.router}>Quick Start</Link></li>
+        <li><Link to='/guides/navigating' router={this.props.router}>Navigating</Link></li>
+      </ul>
+      <h4>Components</h4>
+      <ul>
+        <li><Link to='/components/router' router={this.props.router}>Router</Link></li>
+        <li><Link to='/components/route' router={this.props.router}>Route</Link></li>
+        <li><Link to='/components/link' router={this.props.router}>Link</Link></li>
+        <li><Link to='/components/missing-route' router={this.props.router}>MissingRoute</Link></li>
+      </ul>
+      <h4>Hooks</h4>
+      <ul>
+        <li><Link to='/hooks/before-change-path' router={this.props.router}>beforeChangePath</Link></li>
+        <li><Link to='/hooks/before-dom-update' router={this.props.router}>beforeDOMUpdate</Link></li>
+        <li><Link to='/hooks/after-dom-update' router={this.props.router}>afterDOMUpdate</Link></li>
+        <li><Link to='/hooks/after-change-path' router={this.props.router}>afterChangePath</Link></li>
+        <li><Link to='/hooks/props-for-component' router={this.props.router}>propsForComponent</Link></li>
+      </ul>
+    </div>
   }
 }
 

@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const hljs = require('highlight.js')
 const showdown = require('showdown')
@@ -15,7 +16,6 @@ showdown.extension('codehighlight', function() {
     {
       type: 'output',
       filter: function (text, converter, options) {
-        console.dir(text)
         // use new shodown's regexp engine to conditionally parse codeblocks
         var left  = '<pre><code\\b[^>]*>',
             right = '</code></pre>',
@@ -61,11 +61,10 @@ class Static{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'static', ref: 'content'},
-      etch.dom.h1({}, this.props.title),
-      etch.dom.div({innerHTML: this.markdown.makeHtml(this.props.content)})
-    )
+    return <div className='static' ref='content'>
+      <h1>{this.props.title}</h1>
+      <div innerHTML={this.markdown.makeHtml(this.props.content)} />
+    </div>
   }
 }
 

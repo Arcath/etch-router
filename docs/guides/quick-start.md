@@ -20,6 +20,7 @@ _Notice that you have to install `etch` as well. This gives you control of the e
 For this example we are going to have 3 Etch components that make up the app. `Layout`, a wrapper that puts the site name and a sidebar around its child components. `Home`, the home page. `About`, the about page.
 
 ```javascript
+/** @jsx etch.dom */
 const etch = require('etch')
 
 class Layout{
@@ -36,7 +37,7 @@ class Layout{
   }
 
   render(){
-    return etch.dom.div({className: 'layout'}, (this.children || null))
+    return <div className='layout'>{this.children}</div>
   }
 
   destroy(){
@@ -56,7 +57,7 @@ class Home{
   }
 
   render(){
-    return etch.dom.div({className: 'home', ref: 'homePage'}, 'Home')
+    return <div className='home' ref='homePage'>Home</div>
   }
 
   destroy(){
@@ -76,7 +77,7 @@ class About{
   }
 
   render(){
-    return etch.dom.div({className: 'about', ref: 'aboutPage'}, 'About')
+    return <div className='about' ref='aboutPage'>Home</div>
   }
 
   destroy(){

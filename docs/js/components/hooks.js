@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 
@@ -17,16 +18,10 @@ class Hooks{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'hooks'},
-        etch.dom.p(
-          {className: 'notice'},
-          'Hooks are passed to ',
-          etch.dom(Link, {to: '/components/router', router: this.props.router}, 'Router'),
-          ' as props.'
-        ),
-        ...this.children
-    )
+    return <div className='hooks'>
+      <p className='notice'>Hooks are passed to <Link to='/components/router' router={this.props.router}>Router</Link> as props.</p>
+      {this.children}
+    </div>
   }
 }
 

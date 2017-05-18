@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const chai = require('chai')
 const etch = require('etch')
 const {Link} = require('../index')
@@ -20,14 +21,12 @@ global.TestableComponent = class{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'test'},
-      etch.dom.p(
-        {},
-        etch.dom(Link, {to: '/', router: this.props.router, ref: 'link', activeClassName: 'active'}, 'link')
-      ),
-      ...this.children
-    )
+    return <div className='test'>
+      <p>
+        <Link to='/' router={this.props.router} ref='link' activeClassName='active'>link</Link>
+      </p>
+      {this.children}
+    </div>
   }
 }
 

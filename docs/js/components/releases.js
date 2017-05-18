@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 const jQuery = require('jquery')
@@ -32,16 +33,14 @@ class Releases{
 
   render(){
     if(this.children.length){
-      return etch.dom.div({className: 'releases'}, ...this.children)
+      return <div className='releases'>{this.children}</div>
     }else{
-      return etch.dom.div(
-        {className: 'releases'},
-        etch.dom.h1({}, this.props.releases.length + ' Releases'),
-        etch.dom.ul(
-          {},
-          ...this.entries()
-        )
-      )
+      return <div className='releases'>
+        <h1>{this.props.releases.length} Releases</h1>
+        <ul>
+          {this.entries()}
+        </ul>
+      </div>
     }
   }
 
@@ -50,10 +49,9 @@ class Releases{
 
     for(var release of this.props.releases){
       entries.push(
-        etch.dom.li(
-          {},
-          etch.dom(Link, {to: '/releases/' + release.id, router: this.props.router}, release.name)
-        )
+        <li>
+          <Link to={'/releases/' + release.id} router={this.props.router}>{release.name}</Link>
+        </li>
       )
     }
 

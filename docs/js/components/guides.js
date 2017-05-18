@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 
 class Guides{
@@ -16,10 +17,7 @@ class Guides{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'guides'},
-      ...this.children
-    )
+    return <div className='guides'>{this.children}</div>
   }
 }
 

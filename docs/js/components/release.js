@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 const jQuery = require('jquery')
@@ -36,11 +37,10 @@ class Releases{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'releases'},
-      etch.dom.h1({}, this.props.release.name),
-      etch.dom.div({innerHTML: this.markdown.makeHtml(this.props.release.body)})
-    )
+    return <div className='releases'>
+      <h1>{this.props.release.name}</h1>
+      <div innerHTML={this.markdown.makeHtml(this.props.release.body)} />
+    </div>
   }
 }
 

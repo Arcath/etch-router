@@ -6,8 +6,8 @@
   "main": "index.js",
   "repository": "https://github.com/Arcath/etch-router",
   "scripts": {
-    "test": "eslint lib && electron-mocha --renderer --recursive tests",
-    "test-interactive": "electron-mocha --renderer --recursive --interactive tests"
+    "test": "eslint lib && electron-mocha --renderer --recursive support/register-babel.js tests",
+    "test-interactive": "electron-mocha --renderer --recursive --interactive support/register-babel.js tests"
   },
   "keywords": [
     "etch",
@@ -21,6 +21,7 @@
     "etch": ">= 0.12.2 < 1"
   },
   "devDependencies": {
+    "babel": "^5.8.33",
     "chai": "^3.5.0",
     "electron": "^1.6.8",
     "electron-mocha": "^3.4.0",

@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
 
@@ -19,34 +20,26 @@ class Layout{
   }
 
   render(){
-    return etch.dom.div(
-      {className: 'layout'},
-      etch.dom.div(
-        {className: 'header'},
-        etch.dom.div(
-          {className: 'container'},
-          etch.dom.i({className: 'fa fa-code-fork'}),
-          etch.dom.h1(
-            {},
-            etch.dom(Link, {to: '/', router: this.props.router}, 'Etch Router')
-          ),
-          etch.dom.a(
-            {href: 'https://github.com/Arcath/etch-router'},
-            etch.dom.i({className: 'fa fa-github'})
-          ),
-          etch.dom.a(
-            {href: 'https://npmjs.com/package/etch-router'},
-            etch.dom.i({className: 'fa fa-download'})
-          )
-        )
-      ),
-      etch.dom.div(
-        {className: 'container'},
-        etch.dom(Sidebar, {router: this.props.router}),
-        etch.dom.div({className: 'content'}, ...this.children)
-      ),
-      etch.dom.div({className: 'footer'})
-    )
+    return <div className='layout'>
+      <div className='header'>
+        <div className='container'>
+          <i className='fa fa-code-fork' />
+          <h1>
+            <Link to='/' router={this.props.router}>Etch Router</Link>
+          </h1>
+          <a href='https://github.com/Arcath/etch-router'>
+            <i className='fa fa-github' />
+          </a>
+          <a href='https://npmjs.com/package/etch-router'>
+            <i className='fa fa-download' />
+          </a>
+        </div>
+      </div>
+      <div className='container'>
+        <Sidebar router={this.props.router} />
+        <div className='content'>{this.children}</div>
+      </div>
+    </div>
   }
 }
 

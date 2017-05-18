@@ -1,3 +1,4 @@
+/** @jsx etch.dom */
 const etch = require('etch')
 const stateless = require('etch-stateless')
 
@@ -16,7 +17,7 @@ class Layout{
   }
 
   render(){
-    return etch.dom.div({className: 'layout'}, (this.children || null))
+    return <div className='layout'>{this.children}</div>
   }
 
   destroy(){
@@ -34,7 +35,7 @@ class Home{
   }
 
   render(){
-    return etch.dom.div({className: 'home', ref: 'homePage'}, 'Home')
+    return <div className='home' ref='homePage'>Home</div>
   }
 
   destroy(){
@@ -52,7 +53,7 @@ class About{
   }
 
   render(){
-    return etch.dom.div({className: 'about', ref: 'aboutPage'}, 'About')
+    return <div className='about' ref='aboutPage'>About</div>
   }
 
   destroy(){
@@ -71,8 +72,7 @@ describe('The Router', function(){
     expect(function(){
       var router = new Router(
         {},
-        etch.dom.div({}, 'No supposed to be here'),
-        etch.dom.div({}, 'Or here')
+        <div>Not supposed to be here</div>
       )
     }).to.throw(EtchRouterError, /div is not a valid child of Router/)
   })
@@ -187,7 +187,9 @@ describe('The Router', function(){
       }
 
       render(){
-        return etch.dom.div({className: 'test'}, etch.dom(Link, {to: '/about', ref: 'link', router: this.props.router}, 'Click Me'))
+        return <div className='test'>
+          <Link to='/about' ref='link' router={this.props.router}>Click Me</Link>
+        </div>
       }
     }
 
@@ -223,7 +225,7 @@ describe('The Router', function(){
       }
 
       render(){
-        return etch.dom(Layout, {}, 'Missing')
+        return <Layout>Missing</Layout>
       }
     }
 
@@ -253,7 +255,7 @@ describe('The Router', function(){
       }
 
       render(){
-        return etch.dom.p({}, this.props.params.slug)
+        return <p>{this.props.params.slug}</p>
       }
     }
 
