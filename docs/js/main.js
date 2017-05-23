@@ -7,7 +7,6 @@ require('../less/style.less')
 
 const etch = require('etch')
 const {Router, Route, Link, MissingRoute, Wrapper} = require('etch-router')
-const jQuery = require('jquery')
 const NProgress = require('nprogress')
 
 const Hooks = require('./components/hooks')
@@ -16,6 +15,8 @@ const Missing = require('./components/missing')
 const Release = require('./components/release')
 const Releases = require('./components/releases')
 const Static = require('./components/static')
+
+const loadJSON = require('./functions/loadjson')
 
 var bindLinksToRouter = function(){
   var links = document.querySelectorAll('.static a')
@@ -33,7 +34,7 @@ var bindLinksToRouter = function(){
 
 
 document.addEventListener('DOMContentLoaded', function(){
-  jQuery.getJSON('/content.json', function(data){
+  loadJSON('/content.json', function(data){
     window.pages = data.pages
   })
 
