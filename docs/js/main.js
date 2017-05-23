@@ -82,7 +82,9 @@ document.addEventListener('DOMContentLoaded', function(){
         {path: '/guides', component: Guides, name: 'Guides'},
         new Route({path: '/quick-start', component: Static, name: 'Quick Start'}),
         new Route({path: '/navigating', component: Static, name: 'Navigating'}),
-        new Route({path: '/refs', component: Static, name: 'Refs'})
+        new Route({path: '/refs', component: Static, name: 'Refs'}),
+        new Route({path: '/browser', component: Static, name: 'Browser'}),
+        new Route({path: '/params', component: Static, name: 'Params'})
       )
     ),
     new MissingRoute({component: Missing})

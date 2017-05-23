@@ -16018,6 +16018,24 @@ var Sidebar = function () {
               { to: '/guides/refs', router: this.props.router },
               'Refs'
             )
+          ),
+          etch.dom(
+            'li',
+            null,
+            etch.dom(
+              Link,
+              { to: '/guides/browser', router: this.props.router },
+              'Browser'
+            )
+          ),
+          etch.dom(
+            'li',
+            null,
+            etch.dom(
+              Link,
+              { to: '/guides/params', router: this.props.router },
+              'Params'
+            )
           )
         ),
         etch.dom(
@@ -16216,7 +16234,7 @@ document.addEventListener('DOMContentLoaded', function () {
       NProgress.done();
     },
     afterDOMUpdate: bindLinksToRouter
-  }, new Route({ path: '/', component: Layout, name: 'Layout' }, new Route({ path: '/', component: Static, name: 'Home' }), new Route({ path: '/components', component: Components, name: 'Components' }, new Route({ path: '/router', component: Static, name: 'Router' }), new Route({ path: '/route', component: Static, name: 'Route' }), new Route({ path: '/link', component: Static, name: 'Link' }), new Route({ path: '/missing-route', component: Static, name: 'MissingRoute' })), new Route({ path: '/hooks', component: Hooks, name: 'Hooks' }, new Route({ path: '/before-change-path', component: Static, name: 'beforeChangePath' }), new Route({ path: '/before-dom-update', component: Static, name: 'beforeDOMUpdate' }), new Route({ path: '/after-change-path', component: Static, name: 'afterChangePath' }), new Route({ path: '/after-dom-update', component: Static, name: 'afterDOMUpdate' }), new Route({ path: '/props-for-component', component: Static, name: 'propsForComponent' })), new Route({ path: '/releases', component: Releases, name: 'Releases' }, new Route({ path: '/:id', component: Release, name: 'Release' })), new Route({ path: '/examples', component: Static, name: 'Examples' }), new Route({ path: '/guides', component: Guides, name: 'Guides' }, new Route({ path: '/quick-start', component: Static, name: 'Quick Start' }), new Route({ path: '/navigating', component: Static, name: 'Navigating' }), new Route({ path: '/refs', component: Static, name: 'Refs' }))), new MissingRoute({ component: Missing }));
+  }, new Route({ path: '/', component: Layout, name: 'Layout' }, new Route({ path: '/', component: Static, name: 'Home' }), new Route({ path: '/components', component: Components, name: 'Components' }, new Route({ path: '/router', component: Static, name: 'Router' }), new Route({ path: '/route', component: Static, name: 'Route' }), new Route({ path: '/link', component: Static, name: 'Link' }), new Route({ path: '/missing-route', component: Static, name: 'MissingRoute' })), new Route({ path: '/hooks', component: Hooks, name: 'Hooks' }, new Route({ path: '/before-change-path', component: Static, name: 'beforeChangePath' }), new Route({ path: '/before-dom-update', component: Static, name: 'beforeDOMUpdate' }), new Route({ path: '/after-change-path', component: Static, name: 'afterChangePath' }), new Route({ path: '/after-dom-update', component: Static, name: 'afterDOMUpdate' }), new Route({ path: '/props-for-component', component: Static, name: 'propsForComponent' })), new Route({ path: '/releases', component: Releases, name: 'Releases' }, new Route({ path: '/:id', component: Release, name: 'Release' })), new Route({ path: '/examples', component: Static, name: 'Examples' }), new Route({ path: '/guides', component: Guides, name: 'Guides' }, new Route({ path: '/quick-start', component: Static, name: 'Quick Start' }), new Route({ path: '/navigating', component: Static, name: 'Navigating' }), new Route({ path: '/refs', component: Static, name: 'Refs' }), new Route({ path: '/browser', component: Static, name: 'Browser' }), new Route({ path: '/params', component: Static, name: 'Params' }))), new MissingRoute({ component: Missing }));
 
   document.body.appendChild(window.app.element);
   bindLinksToRouter();
