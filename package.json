@@ -1,6 +1,6 @@
 {
   "name": "etch-router",
-  "version": "0.2.2",
+  "version": "0.3.0-beta",
   "homepage": "http://etch-router.arcath.net",
   "description": "Routing for Etch",
   "main": "index.js",
