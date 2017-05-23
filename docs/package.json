@@ -4,7 +4,7 @@
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.2",
     "etch": "^0.12.4",
-    "etch-router": "^0.2.2",
+    "etch-router": "^0.3.0-beta",
     "file-loader": "^0.11.1",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.11.0",

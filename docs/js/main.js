@@ -6,12 +6,10 @@ require('../node_modules/nprogress/nprogress.css')
 require('../less/style.less')
 
 const etch = require('etch')
-const {Router, Route, Link, MissingRoute} = require('etch-router')
+const {Router, Route, Link, MissingRoute, Wrapper} = require('etch-router')
 const jQuery = require('jquery')
 const NProgress = require('nprogress')
 
-const Components = require('./components/components')
-const Guides = require('./components/guides')
 const Hooks = require('./components/hooks')
 const Layout = require('./components/layout')
 const Missing = require('./components/missing')
@@ -59,11 +57,12 @@ document.addEventListener('DOMContentLoaded', function(){
       {path: '/', component: Layout, name: 'Layout'},
       new Route({path: '/', component: Static, name: 'Home'}),
       new Route(
-        {path: '/components', component: Components, name: 'Components'},
+        {path: '/components', component: Wrapper, props: {className: 'components'}, name: 'Components'},
         new Route({path: '/router', component: Static, name: 'Router'}),
         new Route({path: '/route', component: Static, name: 'Route'}),
         new Route({path: '/link', component: Static, name: 'Link'}),
-        new Route({path: '/missing-route', component: Static, name: 'MissingRoute'})
+        new Route({path: '/missing-route', component: Static, name: 'MissingRoute'}),
+        new Route({path: '/wrapper', component: Static, name: 'Wrapper'})
       ),
       new Route(
         {path: '/hooks', component: Hooks, name: 'Hooks'},
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
       ),
       new Route({path: '/examples', component: Static, name: 'Examples'}),
       new Route(
-        {path: '/guides', component: Guides, name: 'Guides'},
+        {path: '/guides', component: Wrapper, props: {className: 'guides'}, name: 'Guides'},
         new Route({path: '/quick-start', component: Static, name: 'Quick Start'}),
         new Route({path: '/navigating', component: Static, name: 'Navigating'}),
         new Route({path: '/refs', component: Static, name: 'Refs'}),
