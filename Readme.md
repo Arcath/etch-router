@@ -1,6 +1,6 @@
 # Etch-Router
 
-[![Build Status](https://travis-ci.org/Arcath/etch-router.svg?branch=master)](https://travis-ci.org/Arcath/etch-router)
+[![Build Status](https://travis-ci.org/Arcath/etch-router.svg?branch=master)](https://travis-ci.org/Arcath/etch-router) [![Join the chat at https://gitter.im/etch-router/Lobby](https://badges.gitter.im/Arcath/jekyll-atom.svg)](https://gitter.im/etch-router/Lobby)
 
 A Router for Etch that provides methods to link and pass props to Etch components
 
