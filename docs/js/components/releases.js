@@ -37,7 +37,7 @@ class Releases{
     }else{
       return <div className='releases'>
         <h1>{this.props.releases.length} Releases</h1>
-        <ul>
+        <ul className='list'>
           {this.entries()}
         </ul>
       </div>
@@ -50,7 +50,8 @@ class Releases{
     for(var release of this.props.releases){
       entries.push(
         <li>
-          <Link to={'/releases/' + release.id} router={this.props.router}>{release.name}</Link>
+          <h3><Link to={'/releases/' + release.id} router={this.props.router}>{release.name}</Link></h3>
+          <img src={release.author.avatar_url} /><a href={release.author.html_url}>{release.author.login}</a>
         </li>
       )
     }

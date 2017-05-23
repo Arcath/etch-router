@@ -1,9 +1,10 @@
 {
   "private": true,
   "dependencies": {
-    "css-loader": "^0.28.1",
+    "babel-preset-env": "^1.5.1",
+    "css-loader": "^0.28.2",
     "etch": "^0.12.4",
-    "etch-router": "^0.2.1",
+    "etch-router": "^0.2.2",
     "file-loader": "^0.11.1",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.11.0",
@@ -12,10 +13,10 @@
     "less-loader": "^4.0.3",
     "nprogress": "^0.2.0",
     "showdown": "^1.6.4",
-    "style-loader": "^0.17.0",
+    "style-loader": "^0.18.0",
     "typeface-lato": "0.0.25",
     "typeface-raleway": "0.0.22",
-    "webpack": "^2.5.1"
+    "webpack": "^2.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

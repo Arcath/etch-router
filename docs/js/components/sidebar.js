@@ -29,6 +29,7 @@ class Sidebar{
       <ul>
         <li><Link to='/guides/quick-start' router={this.props.router}>Quick Start</Link></li>
         <li><Link to='/guides/navigating' router={this.props.router}>Navigating</Link></li>
+        <li><Link to='/guides/refs' router={this.props.router}>Refs</Link></li>
       </ul>
       <h4>Components</h4>
       <ul>

@@ -17,7 +17,7 @@ class Components{
   }
 
   render(){
-    return <div clasName='components'>{children}</div>
+    return <div clasName='components'>{this.children}</div>
   }
 }
 
