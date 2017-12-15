@@ -1,7 +1,8 @@
 /** @jsx etch.dom */
 const etch = require('etch')
 const {Link} = require('etch-router')
-const jQuery = require('jquery')
+
+const loadJSON = require('../functions/loadjson')
 
 class Releases{
   constructor(props, children){
@@ -15,7 +16,7 @@ class Releases{
     etch.initialize(this)
 
     var _ = this
-    jQuery.getJSON('https://api.github.com/repos/arcath/etch-router/releases', function(data){
+    loadJSON('https://api.github.com/repos/arcath/etch-router/releases', function(data){
       _.update({
         releases: data
       })

@@ -39,6 +39,7 @@ class Sidebar{
         <li><Link to='/components/route' router={this.props.router}>Route</Link></li>
         <li><Link to='/components/link' router={this.props.router}>Link</Link></li>
         <li><Link to='/components/missing-route' router={this.props.router}>MissingRoute</Link></li>
+        <li><Link to='/components/wrapper' router={this.props.router}>Wrapper</Link></li>
       </ul>
       <h4>Hooks</h4>
       <ul>

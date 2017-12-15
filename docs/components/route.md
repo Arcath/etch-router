@@ -11,6 +11,7 @@ permalink: '/components/route'
  - `path` _String_ the routes path relative to the parent route.
  - `component` _Etch Component_ the etch component to display when this route is active.
  - `name` _String_ the name of the route.
+ - `props` _Object_ the props object to pass to the component. Is merged with the props in etch-router and then passed to [propsForComponent](/hooks/props-for-component)
 
 ## Examples
 
