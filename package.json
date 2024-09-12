@@ -30,7 +30,7 @@
     "mocha": "^3.4.1"
   },
   "dependencies": {
-    "path-to-regexp": "^1.7.0",
+    "path-to-regexp": "^8.0.0",
     "sodb": "^1.2.0"
   }
 }
